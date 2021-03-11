@@ -6,6 +6,7 @@ import 'dart:async';
 import 'package:firebase/ui/ciudadano_informacion.dart';
 import 'package:firebase/ui/lista_ciudadano.dart';
 import 'package:firebase/model/ciudadano.dart';
+import 'ciudadano_pantalla.dart';
 
 class ListaCiudadano extends StatefulWidget {
   @override
@@ -53,6 +54,10 @@ class _ListaCiudadanoState extends State<ListaCiudadano> {
             itemCount: items.length,
             padding: EdgeInsets.only(top: 12.0),
             itemBuilder: (context, position) {
+              var icon2 = Icon(
+                Icons.delete,
+                color: Colors.red,
+              );
               return Column(children: <Widget>[
                 Divider(
                   height: 7.0,
@@ -88,10 +93,7 @@ class _ListaCiudadanoState extends State<ListaCiudadano> {
                           context, items[position]),
                     )),
                     IconButton(
-                      icon: Icon(
-                        Icons.delete,
-                        color: Colors.red,
-                      ),
+                      icon: icon2,
                       onPressed: () =>
                           _borrarCiudadano(context, items[position], position),
                     ),
@@ -145,9 +147,27 @@ class _ListaCiudadanoState extends State<ListaCiudadano> {
     });
   }
 
-  _navegarInformacionCiudadano(BuildContext context, Ciudadano item) {}
+  _navegarInformacionCiudadano(
+      BuildContext context, Ciudadano ciudadano) async {
+    await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => PantallaCiudadano(ciudadano)),
+    );
+  }
 
-  _visualizarCiudadano(BuildContext context, Ciudadano item, int position) {}
+  _visualizarCiudadano(BuildContext context, Ciudadano ciudadano) async {
+    await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => InformacionCiudadano(ciudadano)),
+    );
+  }
 
-  _crearCiudadano(BuildContext context) {}
+  _crearCiudadano(BuildContext context) async {
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) =>
+              PantallaCiudadano(Ciudadano(null, '', '', '', ''))),
+    );
+  }
 }
