@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 
 class Ciudadano {
@@ -22,8 +21,8 @@ class Ciudadano {
   String get cedula => _cedula;
   String get nombre => _nombre;
   String get direccion => _direccion;
-  String get email => email;
-  String get telefono => telefono;
+  String get email => _email;
+  String get telefono => _telefono;
 
   Ciudadano.fromSnapShot(DataSnapshot snapshot) {
     _cedula = snapshot.key;

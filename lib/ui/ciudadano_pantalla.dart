@@ -13,7 +13,7 @@ class PantallaCiudadano extends StatefulWidget {
 }
 
 final ciudadanoReferencia =
-    FirebaseDatabase.instance.reference().child('ciudadano');
+    FirebaseDatabase.instance.reference().child('Ciudadano');
 
 class _PantallaCiudadanoState extends State<PantallaCiudadano> {
   List<Ciudadano> items;
@@ -26,7 +26,6 @@ class _PantallaCiudadanoState extends State<PantallaCiudadano> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _idController = new TextEditingController(text: widget.ciudadano.cedula);
     _nombreController =
@@ -44,7 +43,7 @@ class _PantallaCiudadanoState extends State<PantallaCiudadano> {
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: Text(
-          'Ciudadanos DB',
+          'Ingresar Datos',
         ),
         centerTitle: true,
         backgroundColor: Colors.blueAccent,
@@ -79,7 +78,7 @@ class _PantallaCiudadanoState extends State<PantallaCiudadano> {
                   style:
                       TextStyle(fontSize: 17.0, color: Colors.deepOrangeAccent),
                   decoration: InputDecoration(
-                      icon: Icon(Icons.add_location), labelText: 'Habitación'),
+                      icon: Icon(Icons.add_location), labelText: 'Dirección'),
                 ),
                 Padding(padding: EdgeInsets.only(top: 8.0)),
                 Divider(),
@@ -97,7 +96,7 @@ class _PantallaCiudadanoState extends State<PantallaCiudadano> {
                   style:
                       TextStyle(fontSize: 17.0, color: Colors.deepOrangeAccent),
                   decoration: InputDecoration(
-                      icon: Icon(Icons.phone), labelText: 'Teléfono'),
+                      icon: Icon(Icons.phone), labelText: 'telefono'),
                 ),
                 Padding(padding: EdgeInsets.only(top: 8.0)),
                 Divider(),
@@ -105,19 +104,20 @@ class _PantallaCiudadanoState extends State<PantallaCiudadano> {
                     onPressed: () {
                       if (widget.ciudadano.cedula != null) {
                         ciudadanoReferencia.child(widget.ciudadano.cedula).set({
-                          'Nombre': _nombreController.text,
-                          'Habitacion': _habitacionController.text,
-                          'Correo': _correoController.text,
-                          'Telefono': _telefonoController.text,
+                          'cedula': _idController.text,
+                          'nombre': _nombreController.text,
+                          'direccion': _habitacionController.text,
+                          'email': _correoController.text,
+                          'telefono': _telefonoController.text,
                         }).then((_) {
                           Navigator.pop(context);
                         });
                       } else {
                         ciudadanoReferencia.push().set({
-                          'Nombre': _nombreController.text,
-                          'Habitacion': _habitacionController.text,
-                          'Correo': _correoController.text,
-                          'Telefono': _telefonoController.text,
+                          'nombre': _nombreController.text,
+                          'direccion': _habitacionController.text,
+                          'email': _correoController.text,
+                          'telefono': _telefonoController.text,
                         }).then((_) {
                           Navigator.pop(context);
                         });

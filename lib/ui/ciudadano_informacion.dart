@@ -12,14 +12,13 @@ class InformacionCiudadano extends StatefulWidget {
 }
 
 final ciudadanoReferencia =
-    FirebaseDatabase.instance.reference().child('ciudadano');
+    FirebaseDatabase.instance.reference().child('Ciudadano');
 
 class _InformacionCiudadanoState extends State<InformacionCiudadano> {
   List<Ciudadano> items;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
@@ -65,7 +64,7 @@ class _InformacionCiudadanoState extends State<InformacionCiudadano> {
                 ),
                 Divider(),
                 new Text(
-                  "Correo electrónico : ${widget.ciudadano.email}",
+                  "Correo : ${widget.ciudadano.email}",
                   style: TextStyle(fontSize: 18.0),
                 ),
                 Padding(

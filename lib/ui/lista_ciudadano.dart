@@ -1,10 +1,7 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'dart:async';
 import 'package:firebase/ui/ciudadano_informacion.dart';
-import 'package:firebase/ui/lista_ciudadano.dart';
 import 'package:firebase/model/ciudadano.dart';
 import 'ciudadano_pantalla.dart';
 
@@ -14,7 +11,7 @@ class ListaCiudadano extends StatefulWidget {
 }
 
 final ciudadanoReferencia =
-    FirebaseDatabase.instance.reference().child('ciudadano');
+    FirebaseDatabase.instance.reference().child('Ciudadano');
 
 class _ListaCiudadanoState extends State<ListaCiudadano> {
   List<Ciudadano> items;
@@ -31,7 +28,6 @@ class _ListaCiudadanoState extends State<ListaCiudadano> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _adicionarCiudadano.cancel();
     _editarCiudadano.cancel();
@@ -67,7 +63,7 @@ class _ListaCiudadanoState extends State<ListaCiudadano> {
                     Expanded(
                         child: ListTile(
                       title: Text(
-                        '${items[position].nombre}',
+                        '${items[position].cedula}',
                         style: TextStyle(color: Colors.orange, fontSize: 21.0),
                       ),
                       subtitle: Text(
@@ -81,7 +77,7 @@ class _ListaCiudadanoState extends State<ListaCiudadano> {
                             backgroundColor: Colors.amberAccent,
                             radius: 17.0,
                             child: Text(
-                              '${items[position].nombre}',
+                              '${position + 1}',
                               style: TextStyle(
                                   color: Colors.orangeAccent[30],
                                   fontSize: 21.0),
@@ -155,7 +151,8 @@ class _ListaCiudadanoState extends State<ListaCiudadano> {
     );
   }
 
-  _visualizarCiudadano(BuildContext context, Ciudadano ciudadano) async {
+  _visualizarCiudadano(
+      BuildContext context, Ciudadano ciudadano, int position) async {
     await Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => InformacionCiudadano(ciudadano)),
