@@ -56,7 +56,7 @@ class _InformacionCiudadanoState extends State<InformacionCiudadano> {
                 ),
                 Divider(),
                 new Text(
-                  "Habitación : ${widget.ciudadano.direccion}",
+                  "Dirección : ${widget.ciudadano.direccion}",
                   style: TextStyle(fontSize: 18.0),
                 ),
                 Padding(

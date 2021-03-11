@@ -60,7 +60,7 @@ class _PantallaCiudadanoState extends State<PantallaCiudadano> {
                   style:
                       TextStyle(fontSize: 17.0, color: Colors.deepOrangeAccent),
                   decoration: InputDecoration(
-                      icon: Icon(Icons.person), labelText: 'cédula'),
+                      icon: Icon(Icons.person), labelText: 'Cédula'),
                 ),
                 Padding(padding: EdgeInsets.only(top: 8.0)),
                 Divider(),
@@ -102,8 +102,8 @@ class _PantallaCiudadanoState extends State<PantallaCiudadano> {
                 Divider(),
                 FlatButton(
                     onPressed: () {
-                      if (widget.ciudadano.cedula != null) {
-                        ciudadanoReferencia.child(widget.ciudadano.cedula).set({
+                      if (widget.ciudadano.llave != null) {
+                        ciudadanoReferencia.child(widget.ciudadano.llave).set({
                           'cedula': _idController.text,
                           'nombre': _nombreController.text,
                           'direccion': _habitacionController.text,
@@ -114,6 +114,7 @@ class _PantallaCiudadanoState extends State<PantallaCiudadano> {
                         });
                       } else {
                         ciudadanoReferencia.push().set({
+                          'cedula': _idController.text,
                           'nombre': _nombreController.text,
                           'direccion': _habitacionController.text,
                           'email': _correoController.text,
@@ -123,7 +124,7 @@ class _PantallaCiudadanoState extends State<PantallaCiudadano> {
                         });
                       }
                     },
-                    child: (widget.ciudadano.cedula != null)
+                    child: (widget.ciudadano.llave != null)
                         ? Text('Update')
                         : Text('Add')),
               ],

@@ -95,7 +95,7 @@ class _ListaCiudadanoState extends State<ListaCiudadano> {
                     ),
                     IconButton(
                       icon: Icon(
-                        Icons.edit,
+                        Icons.view_list,
                         color: Colors.green,
                       ),
                       onPressed: () => _visualizarCiudadano(
@@ -126,8 +126,8 @@ class _ListaCiudadanoState extends State<ListaCiudadano> {
   }
 
   void _editar(Event event) {
-    var infoCiudadano = items
-        .singleWhere((ciudadano) => ciudadano.cedula == event.snapshot.key);
+    var infoCiudadano =
+        items.singleWhere((ciudadano) => ciudadano.llave == event.snapshot.key);
     setState(() {
       items[items.indexOf(infoCiudadano)] =
           new Ciudadano.fromSnapShot(event.snapshot);
@@ -136,7 +136,7 @@ class _ListaCiudadanoState extends State<ListaCiudadano> {
 
   _borrarCiudadano(
       BuildContext context, Ciudadano ciudadano, int position) async {
-    await ciudadanoReferencia.child(ciudadano.cedula).remove().then((_) {
+    await ciudadanoReferencia.child(ciudadano.llave).remove().then((_) {
       setState(() {
         items.removeAt(position);
       });
@@ -164,7 +164,7 @@ class _ListaCiudadanoState extends State<ListaCiudadano> {
       context,
       MaterialPageRoute(
           builder: (context) =>
-              PantallaCiudadano(Ciudadano(null, '', '', '', ''))),
+              PantallaCiudadano(Ciudadano(null, '', '', '', '', ''))),
     );
   }
 }
