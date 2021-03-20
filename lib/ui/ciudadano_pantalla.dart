@@ -40,7 +40,6 @@ class _PantallaCiudadanoState extends State<PantallaCiudadano> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: Text(
           'Ingresar Datos',
@@ -100,7 +99,7 @@ class _PantallaCiudadanoState extends State<PantallaCiudadano> {
                 ),
                 Padding(padding: EdgeInsets.only(top: 8.0)),
                 Divider(),
-                FlatButton(
+                TextButton(
                     onPressed: () {
                       if (widget.ciudadano.llave != null) {
                         ciudadanoReferencia.child(widget.ciudadano.llave).set({

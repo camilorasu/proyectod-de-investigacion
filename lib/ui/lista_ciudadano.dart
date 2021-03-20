@@ -21,7 +21,7 @@ class _ListaCiudadanoState extends State<ListaCiudadano> {
   @override
   void initState() {
     super.initState();
-    items = new List();
+    items = new List.empty();
     _adicionarCiudadano = ciudadanoReferencia.onChildAdded.listen(_adicionar);
     _editarCiudadano = ciudadanoReferencia.onChildChanged.listen(_editar);
   }
